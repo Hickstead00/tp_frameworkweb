@@ -1,0 +1,37 @@
+# Force LF line endings for all text files
+* text=auto eol=lf
+
+# Treat Python files as text
+*.py text diff=python
+
+# Django templates
+*.html text diff=html
+
+# CSS & JS
+*.css text
+*.js text
+
+# JSON, YAML, TOML
+*.json text
+*.yaml text
+*.yml text
+*.toml text
+
+# Make migrations easier to read in diffs
+*.sql text
+*.py linguist-language=Python
+
+# Ignore binary files for diffs
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.mp4 binary
+*.mov binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
