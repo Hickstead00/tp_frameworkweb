@@ -6,12 +6,20 @@
 </head>
 
 <body>
-    <h1>Liste des livres</h1>
-    <ol>
+    <h1>Bonnes lectures</h1>
+    <table>
         {% for book in all_books %}
-        <li><a href={% url 'book' book.id %}>{{ book.title }}</a>, {{ book.year }}</li>
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.year }}</td>
+            <td>
+                <a href={% url 'book' book.id %}>voir</a>,
+                <a href={% url 'delete_book' book.id %}>effacer</a>
+            </td>
+        </tr>
         {% endfor %}
-    </ol>
+    </table>
+    <p><a href={% url "new_book" %}>Nouveau livre</a></p>
 </body>
 
 </html>

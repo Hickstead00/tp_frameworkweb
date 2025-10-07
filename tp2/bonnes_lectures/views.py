@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 
 from bonnes_lectures.models import *
@@ -29,3 +29,11 @@ def new_book(request):
     form = BookForm()
   
   return render(request, "bonnes_lectures/book_form.html", {"form": form})
+
+def delete_book(request, book_id):
+  book = get_object_or_404(Book, pk=book_id)
+  if request.method == "POST":
+    book.delete()
+    return redirect("index")
+  
+  return render(request, "bonnes_lectures/delete_book.html", {"book": book})

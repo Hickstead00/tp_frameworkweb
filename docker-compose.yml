@@ -2,10 +2,10 @@ services:
  base:
   build:
     context: .
-    dockerfile: Dockerfile_tp2
+    dockerfile: Dockerfile_tp4
     args:
-      USERNAME:            # À compléter
-      USERID:              # À compléter 
+      USERNAME: virgile
+      USERID: 1000
   container_name: fw1-tp2-${USERNAME}
   command: /bin/bash
   tty: true
