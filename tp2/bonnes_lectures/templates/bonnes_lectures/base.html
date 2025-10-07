@@ -1,25 +1,45 @@
+{% load django_bootstrap5 %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Bonnes Lectures{% endblock %}</title>
+    {% bootstrap_css %}
 </head>
 <body>
-    <header>
-        <h1>Bonnes lectures</h1>
-        <nav>
-            <a href="{% url 'index' %}">Accueil</a> |
-            <a href="{% url 'new_book' %}">Nouveau livre</a>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'welcome' %}">Bonnes Lectures</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'welcome' %}">Acceuil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Liste des livres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'new_book' %}">➕ Nouveau livre</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <main>
+    <div class="container mt-4">
+        {% bootstrap_messages %}
         {% block content %}
         {% endblock %}
-    </main>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 - Bonnes Lectures</p>
+    <footer class="bg-light text-center py-3 mt-5">
+        <p class="text-muted mb-0">&copy; 2025 - Bonnes Lectures</p>
     </footer>
+
+    {% bootstrap_javascript %}
 </body>
 </html>

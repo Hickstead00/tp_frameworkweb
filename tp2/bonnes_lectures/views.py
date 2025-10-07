@@ -54,3 +54,6 @@ def check_save(form):
     book = form.save(commit=False)
     book.save()
   return book.id
+
+def welcome(request):
+  return render(request, "bonnes_lectures/welcome.html")
