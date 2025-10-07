@@ -12,6 +12,7 @@
         <li><b>ISBN : {{ book.isbn }}</b></li>
         <li><b>Date de publication : {{ book.year }}</b></li>
     </ul>
+    <a href={% url 'delete_book' book.id %}>effacer le livre</a>
 </body>
 
 </html>

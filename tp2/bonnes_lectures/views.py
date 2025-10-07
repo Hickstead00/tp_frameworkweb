@@ -37,3 +37,20 @@ def delete_book(request, book_id):
     return redirect("index")
   
   return render(request, "bonnes_lectures/delete_book.html", {"book": book})
+
+def edit_book(request, book_id):
+  book = get_object_or_404(Book, pk=book_id)
+  if request.method == "POST":
+    form = BookForm(request.POST, instance=book)
+    id = check_save(form)
+    return redirect("book", book_id=id)
+  else:
+    form = BookForm(instance=book)
+  return render(request, "bonnes_lectures/book_form.html",{"form": form, "button_label": "Modifier"})
+
+
+def check_save(form):
+  if form.is_valid():
+    book = form.save(commit=False)
+    book.save()
+  return book.id

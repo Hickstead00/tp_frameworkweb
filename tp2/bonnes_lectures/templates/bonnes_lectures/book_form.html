@@ -16,7 +16,7 @@
     <form action="/bl/new_book" method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="Nouveau livre">
+        <input type="submit" value="{{ button_label }}">
     </form>
 </body>
 

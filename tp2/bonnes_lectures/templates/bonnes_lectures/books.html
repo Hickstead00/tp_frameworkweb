@@ -14,6 +14,7 @@
             <td>{{ book.year }}</td>
             <td>
                 <a href={% url 'book' book.id %}>voir</a>,
+                <a href={% url 'edit_book' book.id %}>modifier</a>,
                 <a href={% url 'delete_book' book.id %}>effacer</a>
             </td>
         </tr>
