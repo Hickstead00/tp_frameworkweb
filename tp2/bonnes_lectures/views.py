@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+
 from bonnes_lectures.models import *
+from bonnes_lectures.forms import *
 
 
 def index(request):
@@ -14,3 +16,16 @@ def book(request, book_id):
   except Book.DoesNotExist:
     raise Http404("Le livre n'existe pas")
   return render(request, "bonnes_lectures/book.html", {"book":book})
+
+def new_book(request):
+  if request.method == "POST":
+    form = BookForm(request.POST)
+    if form.is_valid():
+      book = form.save(commit=False)
+      book.save()
+
+    return HttpResponseRedirect(f"/bl/book/{book.id}")
+  else:
+    form = BookForm()
+  
+  return render(request, "bonnes_lectures/book_form.html", {"form": form})

@@ -1,0 +1,26 @@
+[
+{
+  "model": "bonnes_lectures.book",
+  "pk": 1,
+  "fields": {
+    "title": "le petit prince",
+    "publisher": "gallimard",
+    "year": 1943,
+    "isbn": "1234567891234",
+    "backCover": "TOTO",
+    "cover": true
+  }
+},
+{
+  "model": "bonnes_lectures.book",
+  "pk": 2,
+  "fields": {
+    "title": "toto",
+    "publisher": "gallimard",
+    "year": 1943,
+    "isbn": "7894561231234",
+    "backCover": "tata",
+    "cover": true
+  }
+}
+]

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<style>
+    #id_year {
+        height: auto;
+        overflow-y: auto;
+    }
+</style>
+
+<body>
+    <form action="/bl/new_book" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Nouveau livre">
+    </form>
+</body>
+
+</html>
