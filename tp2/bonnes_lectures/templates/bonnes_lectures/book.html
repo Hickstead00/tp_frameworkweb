@@ -19,6 +19,7 @@
         <li>
             {{ review.date }} : {{ review.text }}
             <a href="{% url 'edit_review' review.id %}">Modifier</a>
+            <a href="{% url 'delete_review' review.id %}">Supprimer</a>
         </li>
     {% empty %}
         <li>Aucun avis pour ce livre.</li>

@@ -84,3 +84,11 @@ def edit_review(request, review_id):
     form = ReviewForm(instance=review)
   return render(request, 'bonnes_lectures/review_form.html', {'form':form, 'book':review.book})
 
+def delete_review(request, review_id):
+  review = get_object_or_404(Review, pk=review_id)
+  book_id = review.book.id
+  if request.method == 'POST':
+    review.delete()
+    return redirect('book', book_id=review.book.id)
+  return render(request, 'bonnes_lectures/review_confirm_delete.html', {'review':review, 'book':review.book})
+

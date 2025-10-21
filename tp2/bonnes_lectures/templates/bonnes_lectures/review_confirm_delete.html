@@ -1,0 +1,16 @@
+{% extends "bonnes_lectures/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Supprimer l'avis de {{ book.title }}{% endblock %}
+
+{% block content %}
+<h2>Supprimer cet avis ?</h2>
+<p>{{ review.text }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmer la suppression</button>
+</form>
+
+<a href="{% url 'book' book_id=review.book.id %}">Annuler</a>
+{% endblock %}
