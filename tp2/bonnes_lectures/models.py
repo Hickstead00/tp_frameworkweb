@@ -11,3 +11,13 @@ class Book(models.Model):
 
   def __str__(self):
     return self.title
+  
+
+
+class Review(models.Model):
+  date = models.DateField()
+  texte = models.CharField(max_length=250)
+  concerns = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Avis de {self.book.title} ({self.date})"
