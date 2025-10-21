@@ -71,3 +71,16 @@ def add_review(request, book_id):
   else:
     form = ReviewForm()
   return render(request, 'bonnes_lectures/review_form.html', {'form':form, 'book':book})
+
+
+def edit_review(request, review_id):
+  review = get_object_or_404(Review, pk=review_id)
+  if request.method == 'POST':
+    form = ReviewForm(request.POST, instance=review)
+    if form.is_valid():
+      form.save()
+      return redirect("book", book_id=review.book.id)
+  else:
+    form = ReviewForm(instance=review)
+  return render(request, 'bonnes_lectures/review_form.html', {'form':form, 'book':review.book})
+
