@@ -1,0 +1,14 @@
+{% extends "bonnes_lectures/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}Ajouter un avis à {{ book.title }}{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+</form>
+
+<a href="{% url 'book' book.id %}">Annuler</a>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from bonnes_lectures.models import Book
+from bonnes_lectures.models import *
 from django import forms
 
 class BookForm(ModelForm):
@@ -20,3 +20,8 @@ class BookForm(ModelForm):
             "isbn": "ISBN",
             "publisher": "Editeur"
         }
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ['text']

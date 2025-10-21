@@ -13,9 +13,10 @@ def index(request):
 def book(request, book_id):
   try:
     book = Book.objects.get(pk=book_id)
+    reviews = book.reviews.all()
   except Book.DoesNotExist:
     raise Http404("Le livre n'existe pas")
-  return render(request, "bonnes_lectures/book.html", {"book":book})
+  return render(request, "bonnes_lectures/book.html", {"book":book, "reviews":reviews})
 
 def new_book(request):
   if request.method == "POST":
@@ -57,3 +58,16 @@ def check_save(form):
 
 def welcome(request):
   return render(request, "bonnes_lectures/welcome.html")
+
+def add_review(request, book_id):
+  book = get_object_or_404(Book, pk=book_id)
+  if request.method == 'POST':
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+      review = form.save(commit=False)
+      review.book = book
+      review.save()
+      return redirect("book", book_id=book.id)
+  else:
+    form = ReviewForm()
+  return render(request, 'bonnes_lectures/review_form.html', {'form':form, 'book':book})

@@ -12,5 +12,18 @@
         <li><b>Date de publication : {{ book.year }}</b></li>
     </ul>
     <a href={% url 'delete_book' book.id %}>effacer le livre</a>
+
+    <h2>Avis</h2>
+<ul>
+    {% for review in reviews %}
+        <li>
+            {{ review.date }} : {{ review.text }}
+        </li>
+    {% empty %}
+        <li>Aucun avis pour ce livre.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'add_review' book.id %}">Ajouter un avis</a>
 </body>
 {% endblock %}

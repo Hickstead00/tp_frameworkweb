@@ -15,9 +15,9 @@ class Book(models.Model):
 
 
 class Review(models.Model):
-  date = models.DateField()
-  texte = models.CharField(max_length=250)
-  concerns = models.ForeignKey(Book, on_delete=models.CASCADE)
+  date = models.DateField(auto_now_add=True)
+  text = models.CharField(max_length=250)
+  book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews')
 
   def __str__(self):
     return f"Avis de {self.book.title} ({self.date})"
