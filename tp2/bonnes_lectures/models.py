@@ -8,6 +8,7 @@ class Book(models.Model):
   isbn = models.CharField(max_length=13, unique=True)
   backCover = models.TextField()
   cover = models.BooleanField(default=False)
+  author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='books')
 
   def __str__(self):
     return self.title
@@ -21,3 +22,11 @@ class Review(models.Model):
 
   def __str__(self):
     return f"Avis de {self.book.title} ({self.date})"
+  
+class Author(models.Model):
+  name = models.CharField(max_length=50)
+  firstname = models.CharField(max_length=50)
+
+  def __str__(self):
+    return f"{self.firstname} {self.name}"
+
