@@ -1,0 +1,16 @@
+{% extends 'bonnes_lectures/base.html' %}
+
+{% block title %}Auteurs{% endblock %}
+
+{% block content %}
+<h2>Liste des auteurs</h2>
+
+<ul>
+    {% for author in all_authors %}
+        <li>{{ author.name }} {{ author.firstname }}</li>
+    {% empty %}
+        <li>Aucun auteur enregistré.</li>
+    {% endfor %}
+</ul>
+<a class="btn btn-success" href="{% url 'add_author' %}">Ajouter un auteur</a>
+{% endblock %}

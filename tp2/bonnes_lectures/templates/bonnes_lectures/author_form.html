@@ -1,0 +1,26 @@
+{% extends "bonnes_lectures/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}{{ button_label }} un livre{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">{{ button_label }} un auteur</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <div class="d-grid gap-2">
+                        {% bootstrap_button button_label button_type="submit" button_class="btn-primary" %}
+                        <a href="{% url 'index' %}" class="btn btn-secondary">Annuler</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

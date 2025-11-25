@@ -26,3 +26,13 @@ class ReviewForm(ModelForm):
     class Meta:
         model = Review
         fields = ['text']
+
+
+class AuthorForm(ModelForm):
+    class Meta:
+        model = Author
+        fields = ["name", "firstname"]
+        labels = {
+            "name": "Nom",
+            "firstname": "Prénom",
+        }

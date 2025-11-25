@@ -92,3 +92,19 @@ def delete_review(request, review_id):
     return redirect('book', book_id=review.book.id)
   return render(request, 'bonnes_lectures/review_confirm_delete.html', {'review':review, 'book':review.book})
 
+def add_author(request):
+  if request.method == 'POST':
+    form = AuthorForm(request.POST)
+    if form.is_valid():
+      author = form.save(commit=False)
+      author.save()
+    return redirect('author_list')
+  else:
+    form = AuthorForm()
+  return render(request, "bonnes_lectures/author_form.html", {"form":form})
+
+def author_list(request):
+  authors = Author.objects.all()
+  return render(request, "bonnes_lectures/author_list.html", {"all_authors": authors})
+
+
